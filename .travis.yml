@@ -1,0 +1,14 @@
+language: java
+jdk:
+  - openjdk8
+cache:
+  directories:
+    - $HOME/.m2
+sudo: false
+install: "mvn cobertura:cobertura -Dmaven.javadoc.skip=true test"
+
+after_success:
+  - bash <(curl -s https://codecov.io/bash)
+
+after_failure:
+  - echo "build failed!"
