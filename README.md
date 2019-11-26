@@ -9,6 +9,10 @@ A maven plugin for jmh benchmark test.
 [![Build Status](https://travis-ci.org/jhunters/jmh-maven-plugin.svg?branch=master)](https://travis-ci.org/jhunters/jmh-maven-plugin)
 [![Maven Central](https://maven-badges.herokuapp.com/maven-central/com.baidu.maven/jmh-maven-plugin/badge.svg)](https://maven-badges.herokuapp.com/maven-central/com.baidu.maven/jmh-maven-plugin)
 
+#### Know JMH
+JMH is a Java harness for building, running, and analysing nano/micro/milli/macro benchmarks written in Java and other languages targetting the JVM.
+- [Know more](http://openjdk.java.net/projects/code-tools/jmh/)
+
 
 #### Plugin Usage:
 ```xml
