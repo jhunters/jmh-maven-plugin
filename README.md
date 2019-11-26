@@ -7,7 +7,7 @@ A maven plugin for jmh benchmark test.
 
 
 [![Build Status](https://travis-ci.org/jhunters/jmh-maven-plugin.svg?branch=master)](https://travis-ci.org/jhunters/jmh-maven-plugin)
-[![Maven Central](https://maven-badges.herokuapp.com/maven-central/com.baidu/maven/jmh-maven-plugin/badge.svg)](https://maven-badges.herokuapp.com/maven-central/com.baidu/maven/jmh-maven-plugin)
+[![Maven Central](https://maven-badges.herokuapp.com/maven-central/com.baidu.maven/jmh-maven-plugin/badge.svg)](https://maven-badges.herokuapp.com/maven-central/com.baidu.maven/jmh-maven-plugin)
 
 
 #### Plugin Usage:
