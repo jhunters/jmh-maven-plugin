@@ -11,6 +11,7 @@ A maven plugin for jmh benchmark test.
 
 #### Know JMH
 JMH is a Java harness for building, running, and analysing nano/micro/milli/macro benchmarks written in Java and other languages targetting the JVM.
+- [Starts with JMH](./Document.md)
 - [Know more](http://openjdk.java.net/projects/code-tools/jmh/)
 
 
@@ -41,6 +42,17 @@ JMH is a Java harness for building, running, and analysing nano/micro/milli/macr
 		</configuration>
 	</plugin>
 ```
+#### Run in command line:
+```property
+mvn clean test
+
+```
+follow paramter could close benchmark test action at command line 
+```property
+mvn clean test -DskipBenchmark
+
+```
+
 #### 参数说明:
 参数名 |默认值 |  说明 
 -|-|-
