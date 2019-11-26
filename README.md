@@ -37,9 +37,21 @@ A maven plugin for jmh benchmark test.
 		</configuration>
 	</plugin>
 ```
-
-
-
-
+#### 参数说明:
+参数名 |默认值 |  说明 
+-|-|-
+forks | 1 | Number of forks to use in the run |
+warmupForks | 1 |  Number of forks to use in warm up action |
+threads | 1 | Number of threads to run the benchmark in |
+mode | thrpt | Benchmark mode. thrpt(Throughput) avgt(AverageTime) sample(SampleTime) ss(SingleShotTime)  all(All)|
+timeUnit | s |  Timeunit to use in results.  ns ms us s m |
+measurementTime | 1s | How long each measurement iteration should take?  day, hr, us, ms, min, ns, s |
+warmupTime | 1s | How long each warmup iteration should take?  day, hr, us, ms, min, ns, s |
+measurementIterations | 5 | How many measurement measurementIterations to do |
+warmupIterations | 3 | How many warmup iterations to do? |
+resultFormat | JSON | ResultFormatType to use in the run  TEXT, CSV, SCSV, JSON, LATEX, |
+resultFile |  | Output filename to write the result to maven target output |
+benchmarkIncludes || Include benchmark in the run. multiple split by ";" |
+warmUpBenchmarkIncludes || What other benchmarks to warmup along the way. multiple split by ";" |
 
 

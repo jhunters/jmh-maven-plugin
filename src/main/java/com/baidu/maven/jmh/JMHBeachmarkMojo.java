@@ -65,12 +65,9 @@ import edu.emory.mathcs.backport.java.util.Collections;
         defaultPhase = LifecyclePhase.TEST,
         requiresDependencyResolution = ResolutionScope.TEST)
 public class JMHBeachmarkMojo extends AbstractExecMojo {
-
-    private static final String BOOT_INF_CLASSES = "BOOT-INF/classes/";
-
-    /** The Constant TEMP_PATH. */
-    private static final String TEMP_PATH =
-            System.getProperty("java.io.tmpdir") + File.separator + "JMH_TEMP_CACHE_DIR";
+    
+    /** The Constant SKIP_BENCHMARK. -DskipBenchmark */
+    private static final String SKIP_BENCHMARK = "skipBenchmark";
 
     /** The Constant timeUnitMap. */
     private static final Map<String, TimeUnit> timeUnitMap;
@@ -278,6 +275,14 @@ public class JMHBeachmarkMojo extends AbstractExecMojo {
      * @throws MojoFailureException something bad happened...
      */
     public void execute() throws MojoExecutionException, MojoFailureException {
+        
+        String property = System.getProperty(SKIP_BENCHMARK);
+        if (property != null) {
+            // ignore benmark
+            getLog().info("jmh-maven-plugin skipped by -D" + SKIP_BENCHMARK);
+            return;
+        }
+        
         if (outputDirectory == null) {
             throw new MojoExecutionException("error parameter value of 'project.build.outputDirectory' is null.");
         }
