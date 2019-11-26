@@ -2,7 +2,7 @@
 <h1 align="center">jmh-maven-plugin</h1>
 
 <p align="center">
-A maven plugin for jmh benchmark test.
+A maven plugin for jmh benchmark test(Java基准测试工具).
 </p>
 
 
