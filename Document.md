@@ -73,3 +73,14 @@ public class MyBenchmark {
 		</plugins>
 	</build>
 ```
+
+#### Run in command line:
+```property
+mvn clean test
+```
+#### Result output:
+```property
+Benchmark                         Mode  Cnt      Score     Error  Units
+MyBenchmark.stringJoinBenchmark  thrpt    5  18918.186 ± 965.831  ops/s
+```
+
