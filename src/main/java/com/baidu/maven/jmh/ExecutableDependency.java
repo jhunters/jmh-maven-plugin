@@ -1,3 +1,18 @@
+/*
+ * Copyright 2002-2007 the original author or authors.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
 package com.baidu.maven.jmh;
 
 /*
@@ -26,8 +41,7 @@ import org.apache.maven.artifact.Artifact;
  * ExecutableDependency class.
  * </p>
  */
-public class ExecutableDependency
-{
+public class ExecutableDependency {
     private String groupId;
 
     private String artifactId;
@@ -39,8 +53,7 @@ public class ExecutableDependency
      * 
      * @return a {@link java.lang.String} object.
      */
-    public String getGroupId()
-    {
+    public String getGroupId() {
         return this.groupId;
     }
 
@@ -51,8 +64,7 @@ public class ExecutableDependency
      * 
      * @param groupId a {@link java.lang.String} object.
      */
-    public void setGroupId( String groupId )
-    {
+    public void setGroupId(String groupId) {
         this.groupId = groupId;
     }
 
@@ -63,8 +75,7 @@ public class ExecutableDependency
      * 
      * @return a {@link java.lang.String} object.
      */
-    public String getArtifactId()
-    {
+    public String getArtifactId() {
         return this.artifactId;
     }
 
@@ -75,8 +86,7 @@ public class ExecutableDependency
      * 
      * @param artifactId a {@link java.lang.String} object.
      */
-    public void setArtifactId( String artifactId )
-    {
+    public void setArtifactId(String artifactId) {
         this.artifactId = artifactId;
     }
 
@@ -88,38 +98,30 @@ public class ExecutableDependency
      * @param artifact a {@link org.apache.maven.artifact.Artifact} object.
      * @return <code>true</code> if both math, <code>false</code> otherwise.
      */
-    public boolean matches( Artifact artifact )
-    {
-        return artifact.getGroupId().equals( this.getGroupId() )
-            && artifact.getArtifactId().equals( this.getArtifactId() );
+    public boolean matches(Artifact artifact) {
+        return artifact.getGroupId().equals(this.getGroupId()) && artifact.getArtifactId().equals(this.getArtifactId());
     }
 
     /** {@inheritDoc} */
-    public String toString()
-    {
+    public String toString() {
         return this.groupId + ":" + this.artifactId;
     }
 
     /** {@inheritDoc} */
-    public boolean equals( Object o )
-    {
-        if ( this == o )
-        {
+    public boolean equals(Object o) {
+        if (this == o) {
             return true;
         }
-        if ( !( o instanceof ExecutableDependency ) )
-        {
+        if (!(o instanceof ExecutableDependency)) {
             return false;
         }
 
         final ExecutableDependency that = (ExecutableDependency) o;
 
-        if ( artifactId != null ? !artifactId.equals( that.artifactId ) : that.artifactId != null )
-        {
+        if (artifactId != null ? !artifactId.equals(that.artifactId) : that.artifactId != null) {
             return false;
         }
-        if ( groupId != null ? !groupId.equals( that.groupId ) : that.groupId != null )
-        {
+        if (groupId != null ? !groupId.equals(that.groupId) : that.groupId != null) {
             return false;
         }
 
@@ -127,11 +129,10 @@ public class ExecutableDependency
     }
 
     /** {@inheritDoc} */
-    public int hashCode()
-    {
+    public int hashCode() {
         int result;
-        result = ( groupId != null ? groupId.hashCode() : 0 );
-        result = 29 * result + ( artifactId != null ? artifactId.hashCode() : 0 );
+        result = (groupId != null ? groupId.hashCode() : 0);
+        result = 29 * result + (artifactId != null ? artifactId.hashCode() : 0);
         return result;
     }
 }

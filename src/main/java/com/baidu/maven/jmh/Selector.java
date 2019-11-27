@@ -25,8 +25,7 @@ package com.baidu.maven.jmh;
  * 
  * @author Benjamin Bentmann
  */
-interface Selector
-{
+interface Selector {
 
     /**
      * Determines whether a path is selected for deletion.
@@ -34,7 +33,7 @@ interface Selector
      * @param pathname The pathname to test, must not be <code>null</code>.
      * @return <code>true</code> if the given path is selected for deletion, <code>false</code> otherwise.
      */
-    boolean isSelected( String pathname );
+    boolean isSelected(String pathname);
 
     /**
      * Determines whether a directory could contain selected paths.
@@ -43,6 +42,6 @@ interface Selector
      * @return <code>true</code> if the given directory might contain selected paths, <code>false</code> if the
      *         directory will definitively not contain selected paths..
      */
-    boolean couldHoldSelected( String pathname );
+    boolean couldHoldSelected(String pathname);
 
 }

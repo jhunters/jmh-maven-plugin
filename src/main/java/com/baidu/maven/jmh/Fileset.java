@@ -23,8 +23,7 @@ import java.io.File;
 import java.util.Arrays;
 
 /**
- * Customizes the string representation of
- * <code>org.apache.maven.shared.model.fileset.FileSet</code> to return the
+ * Customizes the string representation of <code>org.apache.maven.shared.model.fileset.FileSet</code> to return the
  * included and excluded files from the file-set's directory. Specifically,
  * <code>"file-set: <I>[directory]</I> (included: <I>[included files]</I>,
  * excluded: <I>[excluded files]</I>)"</code>
@@ -32,8 +31,7 @@ import java.util.Arrays;
  * @version $Id$
  * @since 2.1
  */
-public class Fileset
-{
+public class Fileset {
 
     private File directory;
 
@@ -48,57 +46,51 @@ public class Fileset
     /**
      * @return {@link #directory}
      */
-    public File getDirectory()
-    {
+    public File getDirectory() {
         return directory;
     }
 
     /**
      * @return {@link #includes}
      */
-    public String[] getIncludes()
-    {
-        return ( includes != null ) ? includes : new String[0];
+    public String[] getIncludes() {
+        return (includes != null) ? includes : new String[0];
     }
 
     /**
      * @return {@link #excludes}
      */
-    public String[] getExcludes()
-    {
-        return ( excludes != null ) ? excludes : new String[0];
+    public String[] getExcludes() {
+        return (excludes != null) ? excludes : new String[0];
     }
 
     /**
      * @return {@link #followSymlinks}
      */
-    public boolean isFollowSymlinks()
-    {
+    public boolean isFollowSymlinks() {
         return followSymlinks;
     }
 
     /**
      * @return {@link #useDefaultExcludes}
      */
-    public boolean isUseDefaultExcludes()
-    {
+    public boolean isUseDefaultExcludes() {
         return useDefaultExcludes;
     }
 
     /**
-     * Retrieves the included and excluded files from this file-set's directory.
-     * Specifically, <code>"file-set: <I>[directory]</I> (included:
+     * Retrieves the included and excluded files from this file-set's directory. Specifically,
+     * <code>"file-set: <I>[directory]</I> (included:
      * <I>[included files]</I>, excluded: <I>[excluded files]</I>)"</code>
      *
-     * @return The included and excluded files from this file-set's directory.
-     * Specifically, <code>"file-set: <I>[directory]</I> (included:
+     * @return The included and excluded files from this file-set's directory. Specifically,
+     *         <code>"file-set: <I>[directory]</I> (included:
      * <I>[included files]</I>, excluded: <I>[excluded files]</I>)"</code>
      * @see java.lang.Object#toString()
      */
-    public String toString()
-    {
-        return "file set: " + getDirectory() + " (included: " + Arrays.asList( getIncludes() ) + ", excluded: "
-            + Arrays.asList( getExcludes() ) + ")";
+    public String toString() {
+        return "file set: " + getDirectory() + " (included: " + Arrays.asList(getIncludes()) + ", excluded: "
+                + Arrays.asList(getExcludes()) + ")";
     }
 
 }

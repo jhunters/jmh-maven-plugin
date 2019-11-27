@@ -1,0 +1,71 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>com.baidu.maven</groupId>
+  <artifactId>jmh-maven-plugin-demo</artifactId>
+  <version>0.0.1-SNAPSHOT</version>
+  <name>jmh-maven-plugin-demo</name>
+  <description>The demostration for jmh-maven-plugin</description>
+  
+  	<dependencies>
+		<dependency>
+			<groupId>org.openjdk.jmh</groupId>
+			<artifactId>jmh-core</artifactId>
+			<version>${jmh.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.openjdk.jmh</groupId>
+			<artifactId>jmh-generator-annprocess</artifactId>
+			<version>${jmh.version}</version>
+			<scope>provided</scope>
+		</dependency>
+	</dependencies>
+
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<jmh.version>1.22</jmh.version>
+		<javac.target>1.8</javac.target>
+		<uberjar.name>benchmarks</uberjar.name>
+	</properties>
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>com.baidu.maven</groupId>
+				<artifactId>jmh-maven-plugin</artifactId>
+				<version>1.0.1</version>
+				<executions>
+					<execution>
+						<phase>test</phase>
+						<goals>
+							<goal>jmh</goal>
+						</goals>
+					</execution>
+				</executions>
+				<configuration>
+					<forks>1</forks>
+					<warmupForks>1</warmupForks>
+					<threads>1</threads>
+					<mode>thrpt</mode>
+					<timeUnit>s</timeUnit>
+					<measurementTime>1s</measurementTime>
+					<warmupTime>1s</warmupTime>
+					<resultFormat>json</resultFormat>
+					<resultFile>benchmark_json_result</resultFile>
+					<benchmarkIncludes>MyBenchmark</benchmarkIncludes>
+				</configuration>
+			</plugin>
+
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>3.1</version>
+				<configuration>
+					<compilerVersion>${javac.target}</compilerVersion>
+					<source>${javac.target}</source>
+					<target>${javac.target}</target>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+  
+</project>

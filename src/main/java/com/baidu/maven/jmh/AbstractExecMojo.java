@@ -36,51 +36,49 @@ import org.codehaus.plexus.util.cli.CommandLineUtils;
  * @author Philippe Jacot (PJA)
  * @author Jerome Lacoste
  */
-public abstract class AbstractExecMojo
-    extends AbstractMojo
-{
+public abstract class AbstractExecMojo extends AbstractMojo {
     /**
      * The enclosing project.
      */
-    @Parameter( defaultValue = "${project}", readonly = true )
+    @Parameter(defaultValue = "${project}", readonly = true)
     protected MavenProject project;
 
     /**
      * This folder is added to the list of those folders containing source to be compiled. Use this if your plugin
      * generates source code.
      */
-    @Parameter( property = "sourceRoot" )
+    @Parameter(property = "sourceRoot")
     private File sourceRoot;
 
     /**
      * This folder is added to the list of those folders containing source to be compiled for testing. Use this if your
      * plugin generates test source code.
      */
-    @Parameter( property = "testSourceRoot" )
+    @Parameter(property = "testSourceRoot")
     private File testSourceRoot;
 
     /**
      * Arguments separated by space for the executed program. For example: "-j 20"
      *
      */
-    @Parameter( property = "exec.args" )
+    @Parameter(property = "exec.args")
     private String commandlineArgs;
 
     /**
      * Defines the scope of the classpath passed to the plugin. Set to compile,test,runtime or system depending on your
      * needs. Since 1.1.2, the default value is 'runtime' instead of 'compile'.
      */
-    @Parameter( property = "exec.classpathScope", defaultValue = "runtime" )
+    @Parameter(property = "exec.classpathScope", defaultValue = "runtime")
     protected String classpathScope;
 
     /**
-     * Skip the execution.
-     * Starting with version 1.4.0 the former name <code>skip</code> has been
-     * changed into <code>exec.skip</code>.
+     * Skip the execution. Starting with version 1.4.0 the former name <code>skip</code> has been changed into
+     * <code>exec.skip</code>.
+     * 
      * @since 1.0.1
      */
-    //TODO: Remove the alias in version 1.5.0 of the plugin.
-    @Parameter( property = "exec.skip", defaultValue = "false", alias="skip" )
+    // TODO: Remove the alias in version 1.5.0 of the plugin.
+    @Parameter(property = "exec.skip", defaultValue = "false", alias = "skip")
     private boolean skip;
 
     /**
@@ -90,37 +88,27 @@ public abstract class AbstractExecMojo
      * @param artifacts the list where to collect the scope specific artifacts
      * @param theClasspathFiles the list where to collect the scope specific output directories
      */
-    @SuppressWarnings( "unchecked" )
-    protected void collectProjectArtifactsAndClasspath( List<Artifact> artifacts, List<File> theClasspathFiles )
-    {
+    @SuppressWarnings("unchecked")
+    protected void collectProjectArtifactsAndClasspath(List<Artifact> artifacts, List<File> theClasspathFiles) {
 
-        if ( "compile".equals( classpathScope ) )
-        {
-            artifacts.addAll( project.getCompileArtifacts() );
-            theClasspathFiles.add( new File( project.getBuild().getOutputDirectory() ) );
-        }
-        else if ( "test".equals( classpathScope ) )
-        {
-            artifacts.addAll( project.getTestArtifacts() );
-            theClasspathFiles.add( new File( project.getBuild().getTestOutputDirectory() ) );
-            theClasspathFiles.add( new File( project.getBuild().getOutputDirectory() ) );
-        }
-        else if ( "runtime".equals( classpathScope ) )
-        {
-            artifacts.addAll( project.getRuntimeArtifacts() );
-            theClasspathFiles.add( new File( project.getBuild().getOutputDirectory() ) );
-        }
-        else if ( "system".equals( classpathScope ) )
-        {
-            artifacts.addAll( project.getSystemArtifacts() );
-        }
-        else
-        {
-            throw new IllegalStateException( "Invalid classpath scope: " + classpathScope );
+        if ("compile".equals(classpathScope)) {
+            artifacts.addAll(project.getCompileArtifacts());
+            theClasspathFiles.add(new File(project.getBuild().getOutputDirectory()));
+        } else if ("test".equals(classpathScope)) {
+            artifacts.addAll(project.getTestArtifacts());
+            theClasspathFiles.add(new File(project.getBuild().getTestOutputDirectory()));
+            theClasspathFiles.add(new File(project.getBuild().getOutputDirectory()));
+        } else if ("runtime".equals(classpathScope)) {
+            artifacts.addAll(project.getRuntimeArtifacts());
+            theClasspathFiles.add(new File(project.getBuild().getOutputDirectory()));
+        } else if ("system".equals(classpathScope)) {
+            artifacts.addAll(project.getSystemArtifacts());
+        } else {
+            throw new IllegalStateException("Invalid classpath scope: " + classpathScope);
         }
 
-        getLog().debug( "Collected project artifacts " + artifacts );
-        getLog().debug( "Collected project classpath " + theClasspathFiles );
+        getLog().debug("Collected project artifacts " + artifacts);
+        getLog().debug("Collected project classpath " + theClasspathFiles);
     }
 
     /**
@@ -131,22 +119,14 @@ public abstract class AbstractExecMojo
      * @return Array of String representing the arguments
      * @throws MojoExecutionException for wrong formatted arguments
      */
-    protected String[] parseCommandlineArgs()
-        throws MojoExecutionException
-    {
-        if ( commandlineArgs == null )
-        {
+    protected String[] parseCommandlineArgs() throws MojoExecutionException {
+        if (commandlineArgs == null) {
             return null;
-        }
-        else
-        {
-            try
-            {
-                return CommandLineUtils.translateCommandline( commandlineArgs );
-            }
-            catch ( Exception e )
-            {
-                throw new MojoExecutionException( e.getMessage() );
+        } else {
+            try {
+                return CommandLineUtils.translateCommandline(commandlineArgs);
+            } catch (Exception e) {
+                throw new MojoExecutionException(e.getMessage());
             }
         }
     }
@@ -154,26 +134,22 @@ public abstract class AbstractExecMojo
     /**
      * @return true of the mojo has command line arguments
      */
-    protected boolean hasCommandlineArgs()
-    {
-        return ( commandlineArgs != null );
+    protected boolean hasCommandlineArgs() {
+        return (commandlineArgs != null);
     }
 
     /**
      * Register compile and compile tests source roots if necessary
      */
-    protected void registerSourceRoots()
-    {
-        if ( sourceRoot != null )
-        {
-            getLog().info( "Registering compile source root " + sourceRoot );
-            project.addCompileSourceRoot( sourceRoot.toString() );
+    protected void registerSourceRoots() {
+        if (sourceRoot != null) {
+            getLog().info("Registering compile source root " + sourceRoot);
+            project.addCompileSourceRoot(sourceRoot.toString());
         }
 
-        if ( testSourceRoot != null )
-        {
-            getLog().info( "Registering compile test source root " + testSourceRoot );
-            project.addTestCompileSourceRoot( testSourceRoot.toString() );
+        if (testSourceRoot != null) {
+            getLog().info("Registering compile test source root " + testSourceRoot);
+            project.addTestCompileSourceRoot(testSourceRoot.toString());
         }
     }
 
@@ -182,8 +158,7 @@ public abstract class AbstractExecMojo
      *
      * @return true to skip
      */
-    protected boolean isSkip()
-    {
+    protected boolean isSkip() {
         return skip;
     }
 }
