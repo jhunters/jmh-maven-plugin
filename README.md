@@ -12,11 +12,8 @@ A maven plugin for jmh benchmark test(Java基准测试工具).
 #### Know JMH
 JMH is a Java harness for building, running, and analysing nano/micro/milli/macro benchmarks written in Java and other languages targetting the JVM.
 - [Starts with JMH(Recommend reading to know JMH)](./Document.md)
-<<<<<<< HEAD
 - [Know more about JMH](http://openjdk.java.net/projects/code-tools/jmh/)
-=======
-- [Know more](http://openjdk.java.net/projects/code-tools/jmh/)
->>>>>>> branch 'master' of https://github.com/jhunters/jmh-maven-plugin.git
+- [Read demo](https://github.com/jhunters/jmh-maven-plugin/tree/master/jmh-maven-plugin-demo)
 
 
 #### Plugin Usage:
