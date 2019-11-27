@@ -25,7 +25,7 @@ import org.openjdk.jmh.annotations.Scope;
 import org.openjdk.jmh.annotations.State;
 
 /**
- * The Class MyBenchmark.
+ * The Class StringOperationBenchmark.
  */
 @State(Scope.Thread)
 public class StringOperationBenchmark {

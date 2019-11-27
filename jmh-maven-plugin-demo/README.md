@@ -8,9 +8,9 @@ mvn clean test
 
 #### Result as follow:
 ```property
-Benchmark                                      (repeatCount)   Mode  Cnt        Score         Error  Units
-StringOperationBenchmark.stringSplitBenchmark              1  thrpt    5  3177982.431 ¡À 2072079.635  ops/s
-StringOperationBenchmark.stringSplitBenchmark            100  thrpt    5    43485.237 ¡À    3814.979  ops/s
-StringOperationBenchmark.stringSplitBenchmark           1000  thrpt    5     4891.657 ¡À     146.807  ops/s
+Benchmark                                      (stringLengthIncrease)   Mode  Cnt        Score        Error  Units
+StringOperationBenchmark.stringSplitBenchmark                       1  thrpt    5  3915190.427 ¡À 246352.574  ops/s
+StringOperationBenchmark.stringSplitBenchmark                     100  thrpt    5    43535.019 ¡À   9336.384  ops/s
+StringOperationBenchmark.stringSplitBenchmark                    1000  thrpt    5     4432.814 ¡À    901.932  ops/s
 ```
 
