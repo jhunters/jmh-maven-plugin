@@ -64,11 +64,13 @@ mode | thrpt | Benchmark mode. thrpt(Throughput) avgt(AverageTime) sample(Sample
 timeUnit | s |  Timeunit to use in results.  ns ms us s m |
 measurementTime | 1s | How long each measurement iteration should take?  day, hr, us, ms, min, ns, s |
 warmupTime | 1s | How long each warmup iteration should take?  day, hr, us, ms, min, ns, s |
+timeout | 10s | How long to wait for iteration execution day, hr, us, ms, min, ns, s |
 measurementIterations | 5 | How many measurement measurementIterations to do |
 warmupIterations | 3 | How many warmup iterations to do? |
 resultFormat | JSON | ResultFormatType to use in the run  TEXT, CSV, SCSV, JSON, LATEX, |
 resultFile |  | Output filename to write the result to maven target output |
 benchmarkIncludes || Include benchmark in the run. multiple split by ";" |
 warmUpBenchmarkIncludes || What other benchmarks to warmup along the way. multiple split by ";" |
+multiResultFileOutput | false | Output split result file from benchmarkIncludes |
 
 

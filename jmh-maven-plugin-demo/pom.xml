@@ -32,7 +32,7 @@
 			<plugin>
 				<groupId>com.baidu.maven</groupId>
 				<artifactId>jmh-maven-plugin</artifactId>
-				<version>1.0.1</version>
+				<version>1.0.3</version>
 				<executions>
 					<execution>
 						<phase>test</phase>
@@ -49,9 +49,10 @@
 					<timeUnit>s</timeUnit>
 					<measurementTime>1s</measurementTime>
 					<warmupTime>1s</warmupTime>
+					<multiResultFileOutput>true</multiResultFileOutput>
 					<resultFormat>json</resultFormat>
 					<resultFile>benchmark_json_result</resultFile>
-					<benchmarkIncludes>MyBenchmark</benchmarkIncludes>
+					<benchmarkIncludes>StringOperationBenchmark</benchmarkIncludes>
 				</configuration>
 			</plugin>
 

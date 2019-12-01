@@ -160,6 +160,9 @@ public class JMHBeachmarkMojo extends AbstractExecMojo {
     /** The warmup time. */
     @Parameter(property = "jmh.warmupTime", defaultValue = "1s")
     private String warmupTime;
+    
+    @Parameter(property = "jmh.timeout", defaultValue = "10s")
+    private String timeout;
 
     /** The result format. */
     @Parameter(property = "jmh.resultFormat", defaultValue = "JSON")
@@ -172,6 +175,10 @@ public class JMHBeachmarkMojo extends AbstractExecMojo {
     /** The mode. */
     @Parameter(property = "jmh.mode", defaultValue = "thrpt")
     private String mode;
+    
+    /** The muilti result file output. */
+    @Parameter(property = "jmh.multiResultFileOutput", defaultValue = "false")
+    private boolean multiResultFileOutput;
 
     /** The benchmark include. split by ";" */
     @Parameter(property = "jmh.benchmarkIncludes")
@@ -312,10 +319,18 @@ public class JMHBeachmarkMojo extends AbstractExecMojo {
         String[] includes = null;
         if (!benchmarkIncludeSet.isEmpty()) {
             includes = benchmarkIncludeSet.toArray(new String[benchmarkIncludeSet.size()]);
+            
+            if (multiResultFileOutput) {
+                for (String include : includes) {
+                    String resultFilePath = benchMarkResultPath + resultFile + "_" + include;
+                    String[] eachInclude = new String[] {include};
+                    doBenchmarkRun(benchmarkList, hintPath, resultFilePath, classPaths, eachInclude);
+                }
+                return;
+            }
         }
 
         String resultFilePath = benchMarkResultPath + resultFile;
-
         doBenchmarkRun(benchmarkList, hintPath, resultFilePath, classPaths, includes);
     }
 
@@ -342,7 +357,7 @@ public class JMHBeachmarkMojo extends AbstractExecMojo {
                 .result(resultFile) // 输出文件
                 .mode(toMode(mode)) // benchmark 模式， 吐吞量压测
                 .measurementTime(toTimeValue(measurementTime)) // How long each measurement iteration should take
-                .warmupTime(toTimeValue(warmupTime)).detectJvmArgs();
+                .warmupTime(toTimeValue(warmupTime)).timeout(toTimeValue(timeout)).detectJvmArgs();
 
         if (includes != null) {
             for (String string : includes) {
@@ -375,7 +390,7 @@ public class JMHBeachmarkMojo extends AbstractExecMojo {
      * @return the sets the
      */
     private Set<String> parseBenchmarkIncludes(String benchmarkIncludes) {
-        if (!StringUtils.isEmpty(benchmarkIncludes)) {
+        if (StringUtils.isEmpty(benchmarkIncludes)) {
             return Collections.emptySet();
         }
         Set<String> ret = new HashSet<String>();
