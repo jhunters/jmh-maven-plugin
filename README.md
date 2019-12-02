@@ -68,7 +68,7 @@ timeout | 10s | How long to wait for iteration execution day, hr, us, ms, min, n
 measurementIterations | 5 | How many measurement measurementIterations to do |
 warmupIterations | 3 | How many warmup iterations to do? |
 resultFormat | JSON | ResultFormatType to use in the run  TEXT, CSV, SCSV, JSON, LATEX, |
-resultFile |  | Output filename to write the result to maven target output |
+resultFile |  | Output filename to write the result to maven target output 使用JMH可视化工具打开：[jmh-visual-chart](http://deepoove.com/jmh-visual-chart/) 或者 [jmh-visualizer](https://jmh.morethan.io/) |
 benchmarkIncludes || Include benchmark in the run. multiple split by ";" |
 warmUpBenchmarkIncludes || What other benchmarks to warmup along the way. multiple split by ";" |
 multiResultFileOutput | false | Output split result file from benchmarkIncludes (since 1.0.3)|
