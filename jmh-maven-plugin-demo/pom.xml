@@ -52,7 +52,7 @@
 					<multiResultFileOutput>true</multiResultFileOutput>
 					<resultFormat>json</resultFormat>
 					<resultFile>benchmark_json_result</resultFile>
-					<benchmarkIncludes>StringOperationBenchmark</benchmarkIncludes>
+					<benchmarkIncludes>AnotherBenchmark</benchmarkIncludes>
 				</configuration>
 			</plugin>
 

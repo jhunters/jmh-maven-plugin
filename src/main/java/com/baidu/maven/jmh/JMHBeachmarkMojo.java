@@ -142,7 +142,7 @@ public class JMHBeachmarkMojo extends AbstractExecMojo {
     private int warmupMode = 1;
 
     /** The warmup iterations. */
-    @Parameter(property = "jmh.warmupIterations", defaultValue = "3")
+    @Parameter(property = "jmh.warmupIterations", defaultValue = "5")
     private int warmupIterations = 3;
 
     /** The measurement iterations. */
@@ -150,18 +150,18 @@ public class JMHBeachmarkMojo extends AbstractExecMojo {
     private int measurementIterations = 5;
 
     /** The time unit. */
-    @Parameter(property = "jmh.timeUnit", defaultValue = "ms")
+    @Parameter(property = "jmh.timeUnit", defaultValue = "s")
     private String timeUnit;
 
     /** The measurement time. */
-    @Parameter(property = "jmh.measurementTime", defaultValue = "1s")
+    @Parameter(property = "jmh.measurementTime", defaultValue = "10s")
     private String measurementTime;
 
     /** The warmup time. */
-    @Parameter(property = "jmh.warmupTime", defaultValue = "1s")
+    @Parameter(property = "jmh.warmupTime", defaultValue = "10s")
     private String warmupTime;
     
-    @Parameter(property = "jmh.timeout", defaultValue = "10s")
+    @Parameter(property = "jmh.timeout", defaultValue = "10m")
     private String timeout;
 
     /** The result format. */
