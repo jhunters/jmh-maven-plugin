@@ -21,7 +21,7 @@ JMH is a Java harness for building, running, and analysing nano/micro/milli/macr
 	<plugin>
 		<groupId>com.baidu.maven</groupId>
 		<artifactId>jmh-maven-plugin</artifactId>
-		<version>1.0.1</version>
+		<version>1.0.3</version>
 		<executions>
 			<execution>
 				<phase>test</phase>
